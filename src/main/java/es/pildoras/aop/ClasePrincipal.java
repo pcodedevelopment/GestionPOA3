@@ -23,9 +23,19 @@ public class ClasePrincipal {
 
 		// Llamar al método
 		
-		elCliente.insertaCliente();  //Este es el nombre del método que debe coincidir con la anotación @Before
+		Cliente cl1=new Cliente();
+		
+		elCliente.insertaCliente(cl1, "Normal");  //Este es el nombre del método que debe coincidir con la anotación @Before
 		
 		elClienteVIP.insertaClienteVIP();  //Este es el nombre del método que debe coincidir con la anotación @Before
+		
+		elCliente.setCodigoClienteNormal("123456789");
+		
+		elCliente.setValoracionClienteNormal("positiva");
+		
+		String codigoCl=elCliente.getCodigoClienteNormal();
+		
+		String valoraCl=elCliente.getValoracionClienteNormal();
 		
 		// Cerrar el contexto
 		
