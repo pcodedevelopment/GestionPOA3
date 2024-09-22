@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import es.pildoras.aop.dao.ClienteDAO;
 import es.pildoras.aop.dao.ClienteVIPDAO;
+import es.pildoras.aop.servicios.MedicionServicio;
 
 public class ClasePrincipal {
 
@@ -17,19 +18,28 @@ public class ClasePrincipal {
 		
 		// Obtener el bean del contenedor de Spring
 		
-		ClienteDAO elCliente=contexto.getBean("clienteDAO", ClienteDAO.class);
+/*		ClienteDAO elCliente=contexto.getBean("clienteDAO", ClienteDAO.class);
 
-		ClienteVIPDAO elClienteVIP=contexto.getBean("clienteVIPDAO", ClienteVIPDAO.class);
-
-		// Llamar al método
+		try {
+		boolean miParam= false;
 		
-		Cliente cl1=new Cliente();
+		elCliente.encuentraClientes(miParam);
+		}catch(Exception miEx) {
+			
+			System.out.println("Excepción lanzada desde la clase principal");
+			System.out.println(miEx.getMessage());
+			
+		}
 		
-		elCliente.insertaCliente(cl1, "Normal");  //Este es el nombre del método que debe coincidir con la anotación @Before
+		System.out.println("Aquí continuaría la ejecución del programa "); */
 		
-		elClienteVIP.insertaClienteVIP();  //Este es el nombre del método que debe coincidir con la anotación @Before
-				
-		// Cerrar el contexto
+		MedicionServicio elServicio=contexto.getBean("medicionServicio", MedicionServicio.class);
+		
+		System.out.println("Llamando al método getServicio()");
+		
+		String datos=elServicio.getServicio();
+		
+		System.out.println("Devolución del método: " + datos);
 		
 		contexto.close();
 	}
